@@ -1,0 +1,219 @@
+/* ===== GLOBAL RESET & BASE ===== */
+* {
+  box-sizing: border-box;  /* padding doesn't add extra width */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;  /* light gray page background */
+  display: flex;
+  justify-content: center;    /* center horizontally */
+  padding: 2rem;
+}
+
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 850px;           /* max width on large screens */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+}
+
+
+/* ===== LANGUAGE SELECTOR ROW ===== */
+.lang-row {
+  display: flex;              /* place items in a row */
+  align-items: flex-end;      /* align to bottom */
+  gap: 12px;                  /* space between items */
+  margin-bottom: 1.2rem;
+}
+
+.lang-group {
+  flex: 1;                    /* each group takes equal space */
+  display: flex;
+  flex-direction: column;     /* label on top, select below */
+  gap: 6px;
+}
+
+.lang-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0070f3;      /* blue border on focus */
+}
+
+/* SWAP BUTTON */
+#swapBtn {
+  padding: 10px 16px;
+  background: #f0f4f8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;        /* prevent text wrapping */
+  margin-bottom: 0;
+}
+
+#swapBtn:hover {
+  background: #e2e8f0;
+}
+
+
+/* ===== TEXT INPUT AND OUTPUT ===== */
+.text-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* two equal columns */
+  gap: 16px;
+  margin-bottom: 1.2rem;
+}
+
+.box-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.box-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* LEFT: textarea where user types */
+textarea {
+  width: 100%;
+  height: 160px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;           /* only allow vertical resize */
+  font-family: Arial, sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+/* RIGHT: div that shows translated text */
+#outputBox {
+  height: 160px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  background: #f8fafc;        /* slightly different bg to show it's output */
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #333;
+  overflow-y: auto;           /* scroll if text is long */
+}
+
+/* Character count below textarea */
+.char-count {
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;            /* wrap on small screens */
+}
+
+/* TRANSLATE BUTTON */
+#translateBtn {
+  padding: 11px 28px;
+  background: #0070f3;        /* blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#translateBtn:hover {
+  background: #005ecb;        /* darker blue on hover */
+}
+
+#translateBtn:disabled {
+  background: #93c5fd;        /* light blue when loading */
+  cursor: not-allowed;
+}
+
+/* COPY BUTTON */
+#copyBtn {
+  padding: 11px 20px;
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#copyBtn:hover {
+  background: #f0f4f8;
+}
+
+#copyBtn:disabled {
+  opacity: 0.4;               /* faded when disabled */
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGE */
+#status {
+  font-size: 13px;
+  margin-left: auto;          /* push to the right */
+}
+
+#status.success { color: green; }
+#status.error   { color: red;   }
+
+
+/* ===== RESPONSIVE: stack on mobile ===== */
+@media (max-width: 600px) {
+  .text-row {
+    grid-template-columns: 1fr;   /* single column on mobile */
+  }
+  .lang-row {
+    flex-direction: column;
+  }
+  #swapBtn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Language Translation Tool</title>
+
+  <!-- Link to our CSS file for styling -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>🌐 Language Translation Tool</h1>
+
+    <!-- ===== LANGUAGE SELECTOR ROW ===== -->
+    <div class="lang-row">
+
+      <!-- SOURCE LANGUAGE DROPDOWN (translate FROM) -->
+      <div class="lang-group">
+        <label for="srcLang">Source Language (From)</label>
+        <select id="srcLang">
+          <!-- Options will be added by JavaScript -->
+        </select>
+      </div>
+
+      <!-- SWAP BUTTON — switches source and target -->
+      <button id="swapBtn">⇄ Swap</button>
+
+      <!-- TARGET LANGUAGE DROPDOWN (translate TO) -->
+      <div class="lang-group">
+        <label for="tgtLang">Target Language (To)</label>
+        <select id="tgtLang">
+          <!-- Options will be added by JavaScript -->
+        </select>
+      </div>
+
+    </div>
+    <!-- END LANGUAGE SELECTOR ROW -->
+
+
+    <!-- ===== TEXT INPUT AND OUTPUT ROW ===== -->
+    <div class="text-row">
+
+      <!-- LEFT SIDE: User types here -->
+      <div class="box-group">
+        <label for="srcText">Enter Text</label>
+        <textarea
+          id="srcText"
+          placeholder="Type your text here..."
+          maxlength="500">
+        </textarea>
+        <!-- Shows how many characters typed out of 500 -->
+        <p class="char-count"><span id="charCount">0</span> / 500</p>
+      </div>
+
+      <!-- RIGHT SIDE: Translation appears here -->
+      <div class="box-group">
+        <label>Translated Text</label>
+        <!-- This div will show the translated result -->
+        <div id="outputBox">
+          Translation will appear here...
+        </div>
+      </div>
+
+    </div>
+    <!-- END TEXT ROW -->
+
+
+    <!-- ===== ACTION BUTTONS ===== -->
+    <div class="actions">
+
+      <!-- TRANSLATE BUTTON: triggers API call -->
+      <button id="translateBtn">🔁 Translate</button>
+
+      <!-- COPY BUTTON: copies translated text -->
+      <!-- disabled by default, enabled after translation -->
+      <button id="copyBtn" disabled>📋 Copy</button>
+
+      <!-- STATUS MESSAGE: shows success or error -->
+      <span id="status"></span>
+
+    </div>
+    <!-- END ACTION BUTTONS -->
+
+  </div>
+  <!-- END CONTAINER -->
+
+  <!-- Link to our JavaScript file (always at bottom of body) -->
+  <script src="script.js"></script>
+
+</body>
+</html>
